@@ -1,110 +1,106 @@
 <!DOCTYPE html>
+
 <html>
-  <head>
-    <title>New Sails App</title>
-
-    <!-- Viewport mobile tag for sensible mobile support -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <%/* If you want to discourage search engines from indexing this site, uncomment the following line: */%>
-    <%/* <meta name="robots" content="noindex"> */%>
-
-
-    <!--
-        Stylesheets and Preprocessors
-        ==============================
-
-        You can always bring in CSS files manually with `<link>` tags, or asynchronously
-        using a solution like AMD (RequireJS).  Or, if you like, you can take advantage
-        of Sails' conventional asset pipeline (boilerplate Gruntfile).
-
-        By default, stylesheets from your `assets/styles` folder are included
-        here automatically (between STYLES and STYLES END). Both CSS (.css) and LESS (.less)
-        are supported. In production, your styles will be minified and concatenated into
-        a single file.
-
-        To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
-        For example, here are a few things you could do:
-
-            + Change the order of your CSS files
-            + Import stylesheets from other directories
-            + Use a different or additional preprocessor, like SASS, SCSS or Stylus
-    -->
-
-    <!--STYLES-->
-    <!--STYLES END-->
-  </head>
-
+	<head>
+		<title>SIJV</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="/styles/importer.css">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+	</head>
+  
   <body>
-    <%- body %>
-
-
-
-    <!--
-        Client-side Templates
-        ========================
-
-        HTML templates are important prerequisites of modern, rich client applications.
-        To work their magic, frameworks like React, Vue.js, Angular, Ember, and Backbone
-        require that you load these templates client-side.
-
-        By default, your Gruntfile is configured to automatically load and precompile
-        client-side JST templates in your `assets/templates` folder, then
-        include them here automatically (between TEMPLATES and TEMPLATES END).
-
-        To customize this behavior to fit your needs, just edit `tasks/pipeline.js`.
-        For example, here are a few things you could do:
-
-            + Import templates from other directories
-            + Use a different view engine (handlebars, dust, pug/jade, etc.)
-            + Internationalize your client-side templates using a server-side
-              stringfile before they're served.
-    -->
-
-    <!--TEMPLATES-->
-    <!--TEMPLATES END-->
-
-
-    <!--
-        Server-side View Locals
-        ========================
-
-        Sometimes, it's convenient to get access to your server-side view locals from
-        client-side JavaScript.  This can improve page load times, remove the need for
-        extra AJAX requests, and make your client-side code easier to understand and
-        to maintain.  Sails provides a simple mechanism for accessing dynamic view
-        locals: the "exposeLocalsToBrowser()" view partial.
-
-        For more information on using this built-in feature, see:
-        https://sailsjs.com/docs/concepts/views/locals#?escaping-untrusted-data-using-exposelocalstobrowser
-
-    -->
-
-
-    <!--
-
-      Client-side Javascript
-      ========================
-
-      You can always bring in JS files manually with `script` tags, or asynchronously
-      on the client using a solution like AMD (RequireJS).  Or, if you like, you can
-      take advantage of Sails' conventional asset pipeline (boilerplate Gruntfile).
-
-      By default, files in your `assets/js` folder are included here
-      automatically (between SCRIPTS and SCRIPTS END).  Both JavaScript (.js) and
-      CoffeeScript (.coffee) are supported. In production, your scripts will be minified
-      and concatenated into a single file.
-
-      To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
-      For example, here are a few things you could do:
-
-          + Change the order of your scripts
-          + Import scripts from other directories
-          + Use a different preprocessor, like TypeScript
-
-    -->
-
-    <!--SCRIPTS-->
-    <!--SCRIPTS END-->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #17325B;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/" style="color: white;">SIJV</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item" >
+              <a class="nav-link active" aria-current="page" href="/maestros" style="color: white;">Maestros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/directivos" style="color: white;">Directivos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/alumnos" style="color: white;">Alumnos</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+						<li class="nav-item" >
+							<a 
+								class="nav-link" 
+								aria-current="page" 
+								href="#"
+                style="color: white;"
+							>Salir</a>
+						</li>
+					</ul>
+        </div>
+      </div>
+    </nav>
   </body>
+  <%- body %>
+		<style type="text/css">
+			#loading{
+				display: none;
+				position: fixed;
+				top: 0px;
+				left: 0px;
+				right: 0px;
+				bottom: 0px;
+				background: rgba(0,0,0,0.9);
+				transition: 1s;
+			}
+
+			#loading h1 {
+			  text-transform: uppercase;
+			  position: absolute;
+			  left: 50%;
+			  top: 30%;
+			  transform: translate(-50%, -50%);
+			  color: #3BFDBE;
+			}
+
+			#loading .spinner-container {
+			  position: absolute;
+			  left: 50%;
+			  top: 50%;
+			  transform: translate(-50%, -50%);
+			}
+
+			#loading .spinner {
+			  border-radius: 50%;
+			  width: 4rem;
+			  height: 4rem;
+			  border: 0.5em solid #fff;
+			  border-top-color: #3BFDBE;
+			  animation: 1s infinite spin linear;
+			}
+
+			@keyframes spin {
+			  0% {
+				transform: rotate(0);
+			  }
+			  100% {
+				transform: rotate(360deg);
+			  }
+			}
+
+		</style>
+		<div id="loading">
+			<h1>¡ESPERÉ! <b id="msg"></b></h1>
+			<div class="spinner-container">
+				<div class="spinner"></div>
+			</div>
+		</div>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+		<script src="/dependencies/sails.io.js"></script>
+
+	</body>
 </html>

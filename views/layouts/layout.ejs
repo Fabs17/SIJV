@@ -20,12 +20,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+			<% if(tipo==1){ %>
             <li class="nav-item" >
               <a class="nav-link active" aria-current="page" href="/maestros" style="color: white;">Maestros</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/directivos" style="color: white;">Directivos</a>
             </li>
+			<% } %>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/alumnos" style="color: white;">Alumnos</a>
             </li>
@@ -35,7 +37,7 @@
 							<a 
 								class="nav-link" 
 								aria-current="page" 
-								href="#"
+								href="/logout"
                 style="color: white;"
 							>Salir</a>
 						</li>

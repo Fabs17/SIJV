@@ -17,6 +17,19 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  // '*': true,
-
+  "AsignacionController":{
+    "*": "Persona"
+  },
+  "DirectivosController":{
+    "*": "Persona"
+  },
+  "GrupoController":{
+    "*": "Persona"
+  },
+  "HistorialController":{
+    "*": "Persona"
+  },
+  "PersonaController":{
+    "*": "Persona"
+  },
 };

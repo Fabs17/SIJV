@@ -5,7 +5,7 @@
     <div class="container" style="margin-left: auto; margin-right:auto; max-width:80%; margin-top: 2%;">
       <table class="table">
         <thead style="background-color: #FBE842;">
-          <tr>
+          <tr style="text-align: center;">
             <th scope="col">Matrícula</th>
             <th scope="col">Nombre</th>
             <th scope="col">Apellidos</th>
@@ -14,18 +14,20 @@
           </tr>
         </thead>
         <tbody style="background-color: #A6C9FE;">
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                <button type="button" class="btn btn-warning">1er Trimestre</button>
-                <button type="button" class="btn btn-warning" style="margin-left: 2%;">2do Trimestre</button>
-                <button type="button" class="btn btn-warning" style="margin-left: 2%;">3er Trimestre</button>
-                <button type="button" class="btn btn-warning" style="margin-left: 2%;">4to Trimestre</button>
-            </td>
-          </tr>
+          <% alumnos_data.forEach(function(alumno){ %>
+            <tr style="text-align: center;">
+              <td><%=alumno.matricula%></td>
+              <td><%=alumno.nombres%></td>
+              <td><%=alumno.apellidos%></td>
+              <td><%=alumno.nombre%></td>
+              <td>
+                  <button type="button" class="btn btn-warning">1er Trimestre</button>
+                  <button type="button" class="btn btn-warning" style="margin-left: 2%;">2do Trimestre</button>
+                  <button type="button" class="btn btn-warning" style="margin-left: 2%;">3er Trimestre</button>
+                  <button type="button" class="btn btn-warning" style="margin-left: 2%;">4to Trimestre</button>
+              </td>
+            </tr>
+          <% }) %>
         </tbody>
       </table>
     </div>

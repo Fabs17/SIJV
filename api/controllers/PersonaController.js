@@ -6,6 +6,7 @@
  */
 
 
+
 module.exports = {
     getAlumnos: async(req,res)=>{
         if (res.datos_persona.tipo==3){
@@ -26,9 +27,14 @@ module.exports = {
                 alumnos_data: alumnos
             })
         }
+        var alumnos = await Persona.getDatastore().sendNativeQuery(
+            "SELECT * FROM persona p JOIN asignacion a ON p.matricula=a.matricula JOIN grupo g ON a.grupo=g.idGrupo WHERE p.tipo=3"
+        )
+        alumnos = JSON.parse(JSON.stringify(alumnos.rows))
         return res.view('pages/alumnos',{
             layout: 'layouts/layout',
-            tipo: res.datos_persona.tipo
+            tipo: res.datos_persona.tipo,
+            alumnos_data: alumnos
         })
     },
   

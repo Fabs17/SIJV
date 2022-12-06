@@ -21,6 +21,11 @@ module.exports = async function (req, res, proceed){
     );
 
     if(datos_Persona.rows){
+        if(datos_Persona.rows.length===0){
+            datos_Persona = await  Persona.getDatastore().sendNativeQuery(
+                "SELECT * FROM persona WHERE persona.matricula='"+codigo+"'"
+            );
+        }
         res.datos_persona = JSON.parse(JSON.stringify(datos_Persona.rows[0]));
         return proceed();
     }

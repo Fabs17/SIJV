@@ -7,13 +7,20 @@
 
 
 
+
 module.exports = {
     getAlumnos: async(req,res)=>{
         if (res.datos_persona.tipo==3){
+            var campos = await Historial.getDatastore().sendNativeQuery(
+                "SELECT * FROM historial WHERE alumno="+"'"+res.datos_persona.matricula+"' ORDER BY trimestre ASC"
+            )
+            console.log(campos.rows);
+            campos=JSON.parse(JSON.stringify(campos.rows))
             return res.view('pages/historial',{
                 layout: 'layouts/layout',
                 tipo: res.datos_persona.tipo,
-                datos: res.datos_persona
+                datos: res.datos_persona,
+                datos_historial: campos
             })
         }
         if(res.datos_persona.tipo==2){
@@ -31,6 +38,7 @@ module.exports = {
             "SELECT * FROM persona p JOIN asignacion a ON p.matricula=a.matricula JOIN grupo g ON a.grupo=g.idGrupo WHERE p.tipo=3"
         )
         alumnos = JSON.parse(JSON.stringify(alumnos.rows))
+        console.log(alumnos)
         return res.view('pages/alumnos',{
             layout: 'layouts/layout',
             tipo: res.datos_persona.tipo,

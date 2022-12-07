@@ -1,0 +1,58 @@
+<body style="background-color: #879CBD; text-align: center;" onload="rellenar()">
+    <div class="container" style=" margin-top:5rem; max-width: 80%; text-align: center;">
+        <h1><%=data_persona.nombres%> <%=data_persona.apellidos%></h1>
+        <h3><%=data_persona.matricula%></h3>
+        <form method="POST" action="/guardarPonderacion/<%=trimestre%>/<%=data_persona.matricula%>">
+            <div class="row" style="margin-top: 5rem; margin: auto; margin-left: 10%;">
+                <div class="col-sm">
+                    <h4 style="text-align:left;">Lenguaje y Comunicación</h4>
+                    <textarea class="form-control" id="LC" name="LC" maxlength="250" style="resize: none; width: 80%; height: 100%;"></textarea>
+                </div>
+                <div class="col-sm">
+                    <h4 style="text-align:left;">Educación Física</h4>
+                    <textarea class="form-control" id="EF" name="EF" maxlength="250" style="resize: none; width: 80%; height: 100%;"></textarea>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 5rem; margin-left: 10%;">
+                <div class="col-sm">
+                    <h4 style="text-align:left;">Pensamiento Matemático</h4>
+                    <textarea class="form-control" id="PM" name="PM" maxlength="250" style="resize: none; width: 80%; height: 100%;"></textarea>
+                </div>
+                <div class="col-sm">
+                    <h4 style="text-align:left;">Artes</h4>
+                    <textarea class="form-control" id="A" name="A" maxlength="250" style="resize: none; width: 80%; height: 100%;"></textarea>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 5rem; margin-left: 10%;">
+                <div class="col-sm">
+                    <h4 style="text-align:left;">Exploración y comprensión del mundo natural y social</h4>
+                    <textarea class="form-control" id="ECMNS" name="ECMNS" maxlength="250" style="resize: none; width: 80%; height: 100%;"></textarea>
+                </div>
+                <div class="col-sm">
+                    <h4 style="text-align:left;">Educación Socioemocional</h4>
+                    <textarea class="form-control" id="ES" name="ES" maxlength="250" style="resize: none; width: 80%; height: 100%;"></textarea>
+                </div>
+            </div>
+            <input type="hidden" id="Grupo" name="Grupo" value="<%=data_persona.idGrupo%>">
+            <input type="hidden" id="Historial" name="Historial" value="">
+            <center><button type="submit" class="btn btn-warning" style="margin-top: 5%;">Guardar</button></center>
+        </form>
+    </div>
+</body>
+<script type="text/javascript">
+    function _(element){
+        return document.getElementById(element);
+    }
+    function rellenar(){
+        const infoPonderacion = <%-JSON.stringify(data_ponderacion)%>;
+        if(Object.keys(infoPonderacion).length===0) return
+        _("LC").value = infoPonderacion.LC
+        _("EF").value = infoPonderacion.EF
+        _("PM").value = infoPonderacion.PM
+        _("A").value = infoPonderacion.A
+        _("ECMNS").value = infoPonderacion.ECMNS
+        _("ES").value = infoPonderacion.ES
+        _("Historial").value = infoPonderacion.idHistorial
+        
+    }
+</script>

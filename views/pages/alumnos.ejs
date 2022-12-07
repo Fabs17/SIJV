@@ -21,10 +21,10 @@
               <td><%=alumno.apellidos%></td>
               <td><%=alumno.nombre%></td>
               <td>
-                  <button type="button" class="btn btn-warning">1er Trimestre</button>
-                  <button type="button" class="btn btn-warning" style="margin-left: 2%;">2do Trimestre</button>
-                  <button type="button" class="btn btn-warning" style="margin-left: 2%;">3er Trimestre</button>
-                  <button type="button" class="btn btn-warning" style="margin-left: 2%;">4to Trimestre</button>
+                  <button type="button" class="btn btn-warning" onclick="window.location.href='ponderacion/1/<%=alumno.matricula%>'">1er Trimestre</button>
+                  <button type="button" class="btn btn-warning" style="margin-left: 2%;" onclick="window.location.href='ponderacion/2/<%=alumno.matricula%>'">2do Trimestre</button>
+                  <button type="button" class="btn btn-warning" style="margin-left: 2%;" onclick="window.location.href='ponderacion/3/<%=alumno.matricula%>'">3er Trimestre</button>
+                  <button type="button" class="btn btn-warning" style="margin-left: 2%;" onclick="window.location.href='ponderacion/4/<%=alumno.matricula%>'">4to Trimestre</button>
               </td>
             </tr>
           <% }) %>

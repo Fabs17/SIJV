@@ -4,7 +4,7 @@
       <h3 style="color: white;"><%=datos.matricula%></h3>
     </div>
     <div class="container" style="margin-left: auto; margin-right:auto; max-width:80%; margin-top: 2%;">
-      <table class="table">
+      <table class="table" style="max-width: 80%;">
         <thead style="background-color: #FBE842;">
           <tr>
             <th scope="col">Campo Formativo</th>
@@ -13,11 +13,50 @@
           </tr>
         </thead>
         <tbody style="background-color: #A6C9FE;">
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+          <% datos_historial.forEach(function(historial){%>
+            <%if(historial.LC){%>
+              <tr>
+                <td>Lenguaje y Comunicación</td>
+                <td><%= historial.trimestre %></td>
+                <td style="max-width:80rem; word-wrap: break-word;"><%=historial.LC%></td>
+              </tr>
+            <%}%>
+            <%if(historial.PM){%>
+              <tr>
+                <td>Pensamiento Matematico</td>
+                <td><%= historial.trimestre %></td>
+                <td style="max-width:80rem; word-wrap: break-word;"><%=historial.PM%></td>
+              </tr>
+            <%}%>
+            <%if(historial.ECMNS){%>
+              <tr>
+                <td>Exploración y comprensión del mundo natural y social</td>
+                <td><%= historial.trimestre %></td>
+                <td style="max-width:80rem; word-wrap: break-word;"><%=historial.PM%></td>
+              </tr>
+            <%}%>
+            <%if(historial.EF){%>
+              <tr>
+                <td>Educación Física</td>
+                <td><%= historial.trimestre %></td>
+                <td style="max-width:80rem; word-wrap: break-word;"><%=historial.EF%></td>
+              </tr>
+            <%}%>
+            <%if(historial.A){%>
+              <tr>
+                <td>Artes</td>
+                <td><%= historial.trimestre %></td>
+                <td style="max-width:80rem; word-wrap: break-word;"><%=historial.A%></td>
+              </tr>
+            <%}%>
+            <%if(historial.ECMNS){%>
+              <tr>
+                <td>Educación Socioemocional</td>
+                <td><%= historial.trimestre %></td>
+                <td style="max-width:80rem; word-wrap: break-word;"><%=historial.ES%></td>
+              </tr>
+            <%}%>
+          <%})%>
         </tbody>
       </table>
     </div>

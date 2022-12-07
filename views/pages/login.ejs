@@ -22,7 +22,7 @@
                     <center>
                         <h4>Iniciar Sesión</h4>
                     </center>
-                    <form method="post" action="/v1/login">
+                    <form method="post" action="/v1/login" onsubmit="return validar()">
                         <div class="form-group">
                             <label for="matricula" class="form-label">Matrícula</label>
                             <input type="text" class="form-control" id="matricula" name="matricula">
@@ -31,11 +31,24 @@
                             <label for="psw" class="form-label">Contraseña</label>
                             <input type="password" class="form-control" id="psw" name="psw">
                         </div>
-                        <center><a href="/recover">Olvidé mi contraseña</a><br>
-                        <button type="submit" class="btn btn-warning">Iniciar Sesión</button></center>
+                        <center>
+                            <!-- <a href="/recover">Olvidé mi contraseña</a><br> -->
+                            <button type="submit" class="btn btn-warning">Iniciar Sesión</button>
+                        </center>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </body>
+<script>
+    function validar(){
+        if(document.getElementById('matricula').value==="" || document.getElementById('matricula').value===null ){
+            return false
+        }
+        if(document.getElementById('psw').value==="" || document.getElementById('psw').value===null ){
+            return false
+        }
+        return true
+    }
+</script>

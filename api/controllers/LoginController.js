@@ -27,9 +27,8 @@ module.exports = {
                 "SELECT * FROM persona WHERE matricula='"+req.body.matricula+"' AND contrasena='"+req.body.psw+"' LIMIT 1"
             );
         }
-        if(!person.rows) throw "El usuario no fue encontrado";
+        if(person.rows.length===0) throw "El usuario no fue encontrado";
         const send_persona = JSON.parse(JSON.stringify(person.rows[0]));
-        console.log(send_persona);
         const token = jwt.encode(send_persona.matricula, "josevasconcelos");
         res.cookie("token-persona", token, {
             maxAge: 86400000,

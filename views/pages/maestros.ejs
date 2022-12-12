@@ -9,14 +9,20 @@
             <th scope="col">Matrícula</th>
             <th scope="col">Nombre</th>
             <th scope="col">Apellidos</th>
-            <th scope="col">Grado y Grupo</th>
+            <th scope="col">Grupo Asignado</th>
             <th scope="col">Contacto</th>
           </tr>
         </thead>
         <tbody style="background-color: #A6C9FE;">
-          <tr>
-            <td></td>
-          </tr>
+          <% maestros_data.forEach(function(maestro){%>
+            <tr>
+              <td><%= maestro.matricula %></td>
+              <td><%= maestro.nombres %></td>
+              <td><%= maestro.apellidos %></td>
+              <td><%= maestro.nombre %></td>
+              <td></td>
+            </tr>
+          <%})%>
         </tbody>
       </table>
     </div>

@@ -23,12 +23,16 @@ module.exports.routes = {
   'GET /login': { action: 'login/get'},
   'GET /logout': { action: 'login/getLogout' },
   'GET /ponderacion/:trimestre/:id': {action: 'historial/getPonderacion'}, 
-  '/maestros': {view: 'pages/maestros'},
+  'GET /maestros': {action: 'persona/getMaestros'},
   'GET /alumnos': { action: 'persona/getAlumnos' },
-  '/directivos': {view: 'pages/directivos'},
+  'GET /directivos': {action: 'persona/getDirectivos'},
+  'GET /nueva-persona' : {action: 'persona/getNuevo'},
 
   'POST /v1/login': {action: 'login/postLogin'},
   'POST /guardarPonderacion/:trimestre/:id': {action: 'historial/postPonderacion'},
+  'POST /v1/nueva-persona': {action: 'persona/nuevo'},
+  'POST /v1/actualizar-persona/:id': {action: 'persona/actualizar'},
+  'POST /v1/eliminar-persona/:id': {action: 'persona/eliminar'},
 
 
   /***************************************************************************

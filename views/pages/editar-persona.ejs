@@ -1,0 +1,114 @@
+<style>
+    .mb-3 { max-width: 10cm; margin-top: 1cm; }
+    .center { text-align: center; margin-top: 3cm;}
+</style>
+<body style="background-color: #879CBD;">
+    <div class="container" id="formulario">
+        <h1 class="center">NUEVO REGISTRO</h1>
+        <div class="form-check">
+            <div class="row">
+                <div class="mb-3">
+                    <label class="form-label">Matricula</label>
+                    <input  type="text" class="form-control" v-model="formulario.matricula" name="matricula" id="matricula" aria-describedby="help" readonly required>
+                    <small id="help" class="form-text text-muted" style="color:black;">ESTE CAMPO ES OBLIGATORIO</small>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nombres</label>
+                    <input  type="text" class="form-control" v-model="formulario.nombres" name="nombres" id="nombres" aria-describedby="help" required>
+                    <small id="help" class="form-text text-muted" style="color:black;">ESTE CAMPO ES OBLIGATORIO</small>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Apellidos</label>
+                    <input  type="text" class="form-control" v-model="formulario.apellidos" name="apellidos" id="apellidos" aria-describedby="help" required>
+                    <small id="help" class="form-text text-muted" style="color:black;">ESTE CAMPO ES OBLIGATORIO</small>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" v-model="formulario.contrasena" name="contrasena" id="contrasena" aria-describedby="help" required>
+                    <small id="help" class="form-text text-muted">ESTE CAMPO ES OBLIGATORIO</small>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Correo</label>
+                    <input type="email" class="form-control" v-model="formulario.correo" name="correo" aria-describedby="help" required>
+                    <small id="help" class="form-text text-muted">ESTE CAMPO ES OBLIGATORIO</small>
+                </div> 
+                <div class="mb-3">
+                    <label class="form-label">Telefono</label>
+                    <input  type="number" class="form-control" v-model="formulario.telefono" name="telefono" id="telefono" aria-describedby="help" required>
+                    <small id="help" class="form-text text-muted" style="color:black;">ESTE CAMPO ES OBLIGATORIO</small>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Dirección</label>
+                    <input  type="text" class="form-control" v-model="formulario.direccion" name="direccion" id="direccion" aria-describedby="help" required>
+                    <small id="help" class="form-text text-muted" style="color:black;">ESTE CAMPO ES OBLIGATORIO</small>
+                </div>
+                                 
+                <div class="mb-3">
+                    <label class="form-label">Tipo</label>
+                    <select name="tipo" id="tipo" v-model="formulario.tipo" class="form-select" required>
+                        <option selected disabled="">Seleccione una opción</option>
+                        <option value="3">Alumno</option>
+                        <option value="2">Maestro</option>
+                        <option value="1">Directivo</option>
+                    </select>
+                </div>
+                              
+            </div>
+            
+            <div class="row">
+                <div class="mb-3" v-if="formulario.tipo== '1'">
+                    <label class="form-label">Estatus</label>
+                    <select name="estatus" id="estatus" v-model="formulario.estatus" class="form-select" required>
+                        <option selected disabled="">Seleccione una opción</option>
+                        <option value="1">Activo</option>
+                        <option value="0">Inactivo</option>
+                    </select>
+                </div>
+                <div class="mb-3"  v-if="formulario.tipo== '1'">
+                    <label class="form-label">Cargo</label>
+                    <input  type="text" class="form-control" v-model="formulario.cargo" name="cargo" id="cargo" aria-describedby="help" required>
+                    <small id="help" class="form-text text-muted" style="color:black;">ESTE CAMPO ES OBLIGATORIO</small>
+                </div>
+                <div class="mb-3" v-if="formulario.tipo== '3' || formulario.tipo=='2'">
+                    <label class="form-label">Grupo Asignado</label>
+                    <select name="grupo" id="grupo" v-model="formulario.grupo" class="form-select" required>
+                        <option selected disabled="">Seleccione una opción</option>
+                        <% grupos.forEach(function(grupo){%>
+                            <option value="<%=grupo.idGrupo%>"><%=grupo.nombre%></option>
+                        <%})%>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+                <div class="mb-3"  v-if="formulario.grupo== 'Otro'">
+                    <label class="form-label">Nuevo grupo</label>
+                    <input  type="text" class="form-control" v-model="formulario.otro" name="otro" id="otro" aria-describedby="help" required>
+                    <small id="help" class="form-text text-muted" style="color:black;">ESTE CAMPO ES OBLIGATORIO</small>
+                </div>
+            </div>
+            <div class="mb-3" style="margin: auto;">
+                <button
+                    class="btn btn-warning" 
+                    v-on:click= "sendData()"
+                >Crear Usuario</button>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+	
+	var data_formulario = {
+        matricula: "<%=matricula%>",
+		nombres: "",
+        apellidos: "",
+        contrasena: "",
+		correo: "",
+		telefono: "",
+		direccion: "",
+		tipo: "Seleccione una opción",
+        estatus: "Seleccione una opción",
+        cargo: "",
+        grupo: "Seleccione una opción",
+	};
+</script>
+<script src="/js/formularioPersona.js" type="text/javascript" charset="utf-8"></script>
